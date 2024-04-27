@@ -63,6 +63,7 @@ bool str_compare(char* tested, char* target) {
 
 void str_binary_search(char* str_arr[], char* target, unsigned int arr_length) {
     unsigned int left  = 0; unsigned int right = strarr_length(str_arr) - 1; 
+    
     while (left <= right) {
         int mid = left + (right - left) / 2;
         
@@ -89,7 +90,6 @@ void str_binary_search(char* str_arr[], char* target, unsigned int arr_length) {
                 matches[result_index] = mid + up_match;
                 up_match--; result_index++;
             }
-            printf("%i\n", matches[0]);
             output.result = (int*)calloc(output.length, sizeof(int));
             for (int i = 0; i < output.length; i++)
                 output.result[i] = matches[i];
@@ -134,12 +134,12 @@ int main(void) {
     printf("\n%s\n", "sorted array:");
     for (long long i = 0; i < arr_length; i++)
         printf("%s\n", array[i]);
-    str_binary_search(array, "c", arr_length);
+    str_binary_search(array, "n", arr_length);
     printf("\n%s\n", "(index) search results:");
     if (output.is_match == false) 
         printf("%s\n", "no matches");
     else 
         for (int i = 0; i < output.length; i++)
-            printf("%i\n", output.result[i]);
+            printf("%s\n", array[output.result[i]]);
     return 0;
 }
